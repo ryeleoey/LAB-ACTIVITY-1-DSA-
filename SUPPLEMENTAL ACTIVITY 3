@@ -1,0 +1,67 @@
+ROWS = 3
+COLUMNS = 4
+
+seats = [[0 for _ in range(COLUMNS)] for _ in range(ROWS)]
+
+
+def display_seats():
+    print()
+    for row in seats:
+        print(" ".join(str(seat) for seat in row))
+    print()
+
+
+def get_row():
+    while True:
+        try:
+            row = int(input(f"Row (0-{ROWS - 1}): "))
+            if 0 <= row < ROWS:
+                return row
+            print(f"Invalid row. Please enter a number between 0 and {ROWS - 1}.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+
+def get_column():
+    while True:
+        try:
+            col = int(input(f"Column (0-{COLUMNS - 1}): "))
+            if 0 <= col < COLUMNS:
+                return col
+            print(f"Invalid column. Please enter a number between 0 and {COLUMNS - 1}.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+
+def occupy_seat(row, col):
+    if seats[row][col] == "X":
+        print(f"\nSeat ({row}, {col}) is already occupied. Please choose another seat.")
+        return False
+    seats[row][col] = "X"
+    return True
+
+def is_row_full(row):
+    return all(seat == "X" for seat in seats[row])
+
+def is_full():
+    return all(is_row_full(i) for i in range(ROWS))
+
+def main():
+    print("=== Seating Arrangement ===")
+    print("Before:")
+    display_seats()
+
+    while not is_full():
+        row = get_row()
+        if is_row_full(row):
+            print(f"\nRow {row} is full. Please choose another row.")
+            continue
+
+        col = get_column()
+        
+        if occupy_seat(row, col):
+            print("\nAfter:")
+            display_seats()
+
+if __name__ == "__main__":
+    main()

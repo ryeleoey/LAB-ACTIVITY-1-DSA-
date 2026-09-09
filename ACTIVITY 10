@@ -1,0 +1,32 @@
+ROWS = 3
+COLUMNS = 3
+
+matrix = []
+ 
+
+for row in range(ROWS):
+    current_row = []
+
+    for col in range(COLUMNS):
+        value = int(input(f"Enter value for row {row}, column {col}: "))
+        current_row.append(value)
+    matrix.append(current_row)
+
+
+print()
+for row in matrix:
+    print(" ".join(str(value) for value in row))
+
+def find_largest_value(matrix):
+    largest = matrix[0][0]
+    largest_location = (0, 0)
+    for i, row in enumerate(matrix):
+        for j, value in enumerate(row):
+            if value > largest:
+                largest = value
+                largest_location = (i, j)
+    return largest, largest_location
+
+largest_value, largest_location = find_largest_value(matrix)
+print(f"\nLargest value: {largest_value}")
+print(f"Position: Row {largest_location[0]}, Column {largest_location[1]}")

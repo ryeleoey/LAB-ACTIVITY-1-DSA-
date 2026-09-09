@@ -1,0 +1,41 @@
+numbers = []
+
+for i in range(7):
+    value = int(input(f"Day {i + 1}: "))
+    numbers.append(value)
+
+def calculate_averages():
+    Total_Sales = sum(numbers)
+    Average_Sales = Total_Sales / len(numbers)
+    return Average_Sales
+
+def find_highest_lowest():
+    highest = numbers[0]
+    lowest = numbers[0]
+    highest_info = (f"Day {numbers.index(highest) + 1}", highest)
+    lowest_info = (f"Day {numbers.index(lowest) + 1}", lowest)
+
+    for i in range(len(numbers)):
+        if numbers[i] > highest:
+            highest = numbers[i]
+            highest_info = (f"Day {i + 1}", highest)
+        if numbers[i] < lowest:
+            lowest = numbers[i]
+            lowest_info = (f"Day {i + 1}", lowest)
+
+    return highest_info, lowest_info
+
+def main():
+    print("\n=== Sales Data ===")
+    for i in range(7):
+        print(f"Day {i + 1}: {numbers[i]}")
+
+    print(f"\nTotal sales: {sum(numbers)}")
+    print(f"Average sales: {calculate_averages():.2f}")
+
+    highest_info, lowest_info = find_highest_lowest()
+    print(f"\nHighest sales: {highest_info[1]} on {highest_info[0]}")
+    print(f"Lowest sales: {lowest_info[1]} on {lowest_info[0]}")
+
+if __name__ == "__main__":
+    main()

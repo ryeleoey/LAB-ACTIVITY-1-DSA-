@@ -1,0 +1,73 @@
+NUM_STUDENTS = 5
+NUM_SUBJECTS = 3
+
+student_names = [f"Student {i + 1}" for i in range(NUM_STUDENTS)]
+subject_names = [f"Subject {j + 1}" for j in range(NUM_SUBJECTS)]
+
+grades = [[0.0 for _ in range(NUM_SUBJECTS)] for _ in range(NUM_STUDENTS)]
+
+
+def input_grades():
+    print("=== Enter Student Grades ===")
+    for i in range(NUM_STUDENTS):
+        print(f"\n{student_names[i]}:")
+        for j in range(NUM_SUBJECTS):
+            while True:
+                try:
+                    score = float(input(f"  Enter grade for {subject_names[j]}: "))
+                    if 0 <= score <= 100:
+                        grades[i][j] = score
+                        break
+                    else:
+                        print("  Please enter a value between 0 and 100.")
+                except ValueError:
+                    print("  Invalid input. Please enter a number.")
+
+
+def display_table():
+    print("\n=== Student Grades Table ===")
+    header = f"{'':<12}" + "".join(f"{name:>12}" for name in subject_names)
+    print(header)
+    for i in range(NUM_STUDENTS):
+        avg = sum(grades[i]) / NUM_SUBJECTS
+        row = f"{student_names[i]:<12}" + "".join(f"{g:>12.2f}" for g in grades[i])
+        print(row)
+
+
+def calculate_averages():
+    averages = [sum(grades[i]) / NUM_SUBJECTS for i in range(NUM_STUDENTS)]
+    return averages
+
+
+def find_highest_lowest():
+    highest = grades[0][0]
+    lowest = grades[0][0]
+
+    for i in range(NUM_STUDENTS):
+        for j in range(NUM_SUBJECTS):
+            if grades[i][j] > highest:
+                highest = grades[i][j]
+
+            if grades[i][j] < lowest:
+                lowest = grades[i][j]
+
+    return highest, lowest
+
+
+def main():
+    input_grades()
+    display_table()
+
+    print("\1")
+    averages = calculate_averages()
+    for i in range(NUM_STUDENTS):
+        print(f"{student_names[i]} Average: {averages[i]:.2f}")
+
+    print("\1")
+    highest, lowest = find_highest_lowest()
+    print(f"Highest grade: {highest:.2f}")
+    print(f"Lowest grade:  {lowest:.2f}")
+
+
+if __name__ == "__main__":
+    main()

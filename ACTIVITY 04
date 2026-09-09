@@ -1,0 +1,27 @@
+numbers = []
+n = int(input())
+
+for i in range(n):
+    value = int(input(f""))
+    numbers.append(value)
+
+def find_highest_lowest():
+    largest = numbers[0]
+    smallest = numbers[0]
+
+    for i in range(len(numbers)):
+        if numbers[i] > largest:
+            largest = numbers[i]
+        if numbers[i] < smallest    :
+            smallest = numbers[i]
+
+    return largest, smallest
+
+def main():
+    print(f"\nArray: {numbers}")
+
+    largest, smallest = find_highest_lowest()
+    print(f"Largest value: {largest}")
+    print(f"Smallest value: {smallest}")
+
+main()

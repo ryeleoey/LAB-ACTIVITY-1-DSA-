@@ -1,0 +1,17 @@
+
+numbers = [10, 20, 30, 40, 50]
+
+print("TEST CASE 1")
+for i in range(len(numbers)):
+    print("Index", i, ":", numbers[i])
+
+numbers = [5, 10, 15, 20, 25]
+
+print("TEST CASE 2")
+for i in range(len(numbers)):
+    print("Index", i, ":", numbers[i])
+
+numbers = [100, 200, 300, 400, 500]
+print("TEST CASE 3")
+for i in range(len(numbers)):
+    print("Index", i, ":", numbers[i])

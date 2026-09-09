@@ -1,0 +1,19 @@
+ROWS = 3
+COLUMNS = 3
+ 
+
+matrix = []
+ 
+
+for row in range(ROWS):
+    current_row = []
+
+    for col in range(COLUMNS):
+        value = int(input(f"Enter value for row {row}, column {col}: "))
+        current_row.append(value)
+    matrix.append(current_row)
+
+
+print()
+for row in matrix:
+    print(" ".join(str(value) for value in row))

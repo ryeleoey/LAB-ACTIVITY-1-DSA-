@@ -1,0 +1,19 @@
+ROWS = 3
+COLUMNS = 3
+
+matrix = [ [1, 2, 3], [4, 5, 6], [7, 8, 9] ]
+
+for row in range(ROWS):
+    row_sum = sum(matrix[row])
+    print(f"Row {row} sum: {row_sum}")
+
+print()
+for col in range(COLUMNS):
+    col_sum = 0
+    for row in range(ROWS):
+        col_sum += matrix[row][col]
+    print(f"Column {col} sum: {col_sum}")
+
+print()
+total_sum = sum(sum(row) for row in matrix)
+print(f"Total sum: {total_sum}")
