@@ -1,4 +1,9 @@
 numbers = []
+n = int(input("Number of elements: "))
+
+for i in range(n):
+    value = int(input(f"Element {i + 1}: "))
+    numbers.append(value)
 
 def linear_search(arr, target):
     for i in range(len(arr)):
